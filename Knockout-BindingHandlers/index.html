@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <link rel="stylesheet" href="Content/select2.css" type="text/css" />
+
+    <script src="Libraries/knockout-3.2.0.js"></script>
+    <script src="Libraries/jquery-1.11.1.js"></script>
+    <script src="Libraries/select2.js"></script>
+    <script src="BindingHandlers/select2.js"></script>
+    <script src="ViewModels/test.js"></script>
+</head>
+<body>
+    <h1>TypeScript Select2 Binding Handler</h1>
+
+    <div data-bind="value: selectedState, select2: { data: states, placeholder: 'Select a State', formatResult: format }" class="select2" style="width: 200px"></div>
+    Selected: <span data-bind="text: selectedState"></span>
+</body>
+</html>

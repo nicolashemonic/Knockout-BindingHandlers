@@ -194,7 +194,8 @@ FakesAssemblies/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -228,3 +229,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.map
+Knockout-BindingHandlers/BindingHandlers/*.js
+Knockout-BindingHandlers/Typings/*.js
+Knockout-BindingHandlers/ViewModels/*.js
+
