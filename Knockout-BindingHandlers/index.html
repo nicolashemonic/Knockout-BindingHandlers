@@ -15,7 +15,25 @@
 <body>
     <h1>TypeScript Select2 Binding Handler</h1>
 
-    <div data-bind="value: selectedState, select2: { data: states, placeholder: 'Select a State', formatResult: format }" class="select2" style="width: 200px"></div>
-    Selected: <span data-bind="text: selectedState"></span>
+    <div>
+        <select data-bind="optionsCaption: 'Select a state',
+                            options: states,
+                            value: selectedState,
+                            optionsText: 'text',
+                            optionsValue: 'id',
+                            select2: { value: selectedStateObj }" class="select2" style="width: 200px"></select>
+        Selected option: <span data-bind="text: selectedState"></span>
+    </div>
+    <br/>
+    <div>
+        <select multiple data-bind="options: states,
+                                    selectedOptions: selectedStates,
+                                    optionsText: 'text',
+                                    optionsValue: 'id',
+                                    select2: { value: selectedStatesObj }" class="select2" style="width: 200px"></select>
+        Selected options: <span data-bind="foreach: selectedStates">
+            <span data-bind="text: $data"></span>
+        </span>
+    </div>
 </body>
 </html>
