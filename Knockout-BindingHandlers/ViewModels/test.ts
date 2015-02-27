@@ -1,27 +1,45 @@
 ﻿class State {
-    constructor(public id, public text) {
-        this.id = id;
+    constructor(public value, public text) {
+        this.value = value;
         this.text = text;
     }
 }
 
+var json = [
+    new State(1, "Alabama"),
+    new State("AK", "Alaska"),
+    new State("AZ", "Arizona"),
+    new State("WV", "West Virginia"),
+    new State("WI", "Wisconsin"),
+    new State("WY", "Wyoming")
+];
+
 class ViewModel {
-    constructor(){
-        this.states = ko.observableArray<State>([
-            new State("AL", "Alabama"),
-            new State("AK", "Alaska"),
-            new State("AZ", "Arizona"),
-            new State("WV", "West Virginia"),
-            new State("WI", "Wisconsin"),
-            new State("WY", "Wyoming")
-        ]);
+    constructor() {
+        setTimeout(() => {
+            this.states(json);
+        }, 500);
+
+        setTimeout(() => {
+            this.selectedState(json[4]);
+        }, 1000);
     }
-    
-    private states;
-    private selectedState = ko.observable<string>();
-    private selectedStateObj = ko.observable<State>();
-    private selectedStates = ko.observableArray<string>([]);
-    private selectedStatesObj = ko.observableArray<State>([]);
+
+    private states = ko.observableArray<State>([]);
+
+    private selectedState = ko.observable<State>();
+
+    private getStates = () => {
+        return { results: this.states() };
+    }
+
+    private getStateId = (obj) => {
+        return obj.value;
+    }
+
+    private selectFirstState() {
+        this.selectedState(this.states()[0]);
+    }
 };
 
 $(document).ready(() => {
