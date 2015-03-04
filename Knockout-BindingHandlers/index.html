@@ -12,16 +12,59 @@
     <script src="BindingHandlers/select2.js"></script>
     <script src="ViewModels/test.js"></script>
 </head>
-<body>
+<body id="scope">
+
     <h1>TypeScript Select2 Binding Handler</h1>
 
-    <div>
-        <h2>Simple select</h2>
-        <div data-bind="select2: { data: getStates, value: selectedState, id: getStateId }" class="select2" style="width: 200px"></div>
-        Selected option: <span data-bind="text: selectedState() ? selectedState().value : 'empty'"></span>
-        <button data-bind="click: selectFirstState">Select first state</button>
-    </div>
-    <br/>
+    <h2>Simple select</h2>
+    <p><code>select2: { data: getStates, value: selectedState }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedState }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedState() ? selectedState().text : 'empty'"></span>
+    <button data-bind="click: selectFirstState">Select first state</button>
+
+    <h2>Multiple select</h2>
+    <p><code>select2: { data: getStates, value: selectedStates, multiple: true }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedStates, multiple: true }" class="select2" style="width: 200px"></div>
+    Selected options:
+    <!-- ko foreach: selectedStates -->
+    <span data-bind="text: text"></span>
+    <!-- /ko -->
+
+    <h2>Place Holder</h2>
+    <p><code>select2: { data: getStates, value: selectedState, placeholder: 'Select a state' }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedState, placeholder: 'Select a state' }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedState() ? selectedState().text : 'empty'"></span>
+    <button data-bind="click: selectFirstState">Select first state</button>
+    
+    <h2>Allow clear</h2>
+    <p><code>select2: { data: getStates, value: selectedState, placeholder: 'Select a state', allowClear: true }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedState, placeholder: 'Select a state', allowClear: true }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedState() ? selectedState().text : 'empty'"></span>
+    <button data-bind="click: selectFirstState">Select first state</button>
+
+    <h2>Custom Id</h2>
+    <p><code>select2: { data: getCustomIdStates, value: selectedCustomIdState, id: getStateId }</code></p>
+    <div data-bind="select2: { data: getCustomIdStates, value: selectedCustomIdState, id: getStateId }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedCustomIdState() ? selectedCustomIdState().text : 'empty'"></span>
+    <button data-bind="click: selectFirstCustomIdState">Select first state</button>
+
+    <h2>Custom Text</h2>
+    <p><code>select2: { data: getCustomTextStates, value: selectedCustomTextState, text: getStateText }</code></p>
+    <div data-bind="select2: { data: getCustomTextStates, value: selectedCustomTextState, text: getStateText }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedCustomTextState() ? selectedCustomTextState().display : 'empty'"></span>
+    <button data-bind="click: selectFirstCustomTextState">Select first state</button>
+
+    <h2>Disabled select</h2>
+    <p><code>select2: { data: getStates, value: selectedState, enable: isEnabled }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedState, enable: isEnabled }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedState() ? selectedState().text : 'empty'"></span>
+    <button data-bind="click: toggleIsEnabled">Toggle enable</button>
+
+    <h2>Disabled search</h2>
+    <p><code>select2: { data: getStates, value: selectedState, minimumResultsForSearch: -1 }</code></p>
+    <div data-bind="select2: { data: getStates, value: selectedState, minimumResultsForSearch: -1 }" class="select2" style="width: 200px"></div>
+    Selected option: <span data-bind="text: selectedState() ? selectedState().text : 'empty'"></span>
+    
 
 </body>
 </html>
